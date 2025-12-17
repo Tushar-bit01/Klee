@@ -2,20 +2,20 @@
 
 @font-face {
   font-family: font1;
-  src: url(../public/fonts/ArcaneNine.otf);
+  src: url(/fonts/ArcaneNine.otf);
 }
 @font-face {
   font-family: font2;
-  src: url(../public/fonts/League.otf);
+  src: url(/fonts/League.otf);
 }
 @font-face {
   font-family: font3;
-  src: url(../public/fonts/Lausanne-500.woff2);
+  src: url(/fonts/Lausanne-500.woff2);
 }
 
 @font-face {
   font-family: font4;
-  src: url(../public/fonts/Lausanne-500.woff2);
+  src: url(/fonts/Lausanne-500.woff2);
 }
 
 body{
