@@ -18,6 +18,55 @@
   src: url(/fonts/Lausanne-500.woff2);
 }
 
-body{
-  background-color: #111;
+.link {
+  opacity: 0;
+  transform: rotateX(90deg);
+  transform-origin: top;
+}
+
+.navlink {
+  opacity: 0;
+}
+
+.stairing {
+  height: 0;
+}
+
+.fullscreennav {
+  z-index: 100; /* Higher than stair component */
+}
+
+
+.moveX{
+  animation-name: moveAnimation;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes moveAnimation {
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
+  }
+}
+
+.link {
+  overflow: hidden;
+  
+}
+
+.moveLink{
+  opacity:0;
+  transform: translateY(-20px);
+  
+}
+
+.link:hover .moveLink{
+  opacity:1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  
 }
