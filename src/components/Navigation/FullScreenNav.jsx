@@ -1,6 +1,6 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef,useEffect } from 'react'
 import NavImg from "../../assets/Navbar/TitleNavbar.png";
 import { NavbarContext } from "../../context/NavContext";
 
@@ -81,6 +81,19 @@ const FullScreenNav = () => {
     }
   }, [navOpen])
 
+  useEffect(() => {
+    if (navOpen) {
+      document.body.style.overflow = 'hidden';  // Nav open = no scroll
+    } else {
+      document.body.style.overflow = 'unset';   // Nav closed = scroll enabled
+    }
+    
+    // Cleanup: component unmount hone par scroll restore karo
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [navOpen]);
+
   return (
     <div
       id="fullscreennav"
@@ -99,7 +112,7 @@ const FullScreenNav = () => {
       
       {/* Content layer - on top of stairs */}
       <div ref={fullNavLinksref} className="relative z-[2]">
-        <div className="flex w-full justify-between items-start navlink opacity-0">
+        <div className="flex w-full justify-between items-start navlink opacity-0 overflow-hidden">
           <div className="pl-2 pt-0 h-[5vw] w-[20vw] mt-2">
             <img src={NavImg} className="h-full w-full" alt="Navigation" />
           </div>
