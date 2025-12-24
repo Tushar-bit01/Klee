@@ -17,7 +17,7 @@ const Home = () => {
         <HomeHeroText />
         <HomeBottomText />
       </div>
-      <div className="absolute bottom-[0.4vw] left-[0.4vw]" onClick={()=>{
+      <div className="absolute bottom-[0.4vw] left-[0.4vw] cursor-pointer" onClick={()=>{
         setVol(sound=>(!sound));
       }}>
         {vol? <img src={volume} className="h-[5vw] w-[5vw] text-white"></img>:<img src={mute} className="h-[5vw] w-[5vw] text-white"></img>}  
