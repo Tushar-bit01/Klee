@@ -113,20 +113,20 @@ const FullScreenNav = () => {
       {/* Content layer - on top of stairs */}
       <div ref={fullNavLinksref} className="relative z-[2]">
         <div className="flex w-full justify-between items-start navlink opacity-0 overflow-hidden">
-          <div className="pl-2 pt-0 h-[5vw] w-[20vw] mt-2">
+          <div className="lg:pl-2 pl-1 pt-0 lg:h-[5vw] lg:w-[16vw] h-[15vw] w-[36vw]">
             <img src={NavImg} className="h-full w-full" alt="Navigation" />
           </div>
           <div 
-            className="h-[8vw] w-[8vw] cursor-pointer m-2 relative group" 
+            className="lg:h-[8vw] h-[20vw] w-[20vw] lg:w-[8vw] cursor-pointer m-2 relative group " 
             onClick={() => setNavOpen(false)}
           >
-            <div className="h-[11vw] w-1 origin-top absolute bg-white -rotate-45 group-hover:bg-gradient-to-b group-hover:from-[#a6e7ff] group-hover:to-[#6fb8ff] transition-all duration-300"></div>
-            <div className="h-[11vw] w-1 origin-top absolute bg-white rotate-45 right-0 group-hover:bg-gradient-to-b group-hover:from-[#a6e7ff] group-hover:to-[#6fb8ff] transition-all duration-300"></div>
+            <div className="lg:h-[11vw] h-[28vw] lg:w-1 w-[0.5vw] origin-top absolute bg-white -rotate-45 group-hover:bg-gradient-to-b group-hover:from-[#a6e7ff] group-hover:to-[#6fb8ff] transition-all duration-300"></div>
+            <div className="lg:h-[11vw] h-[28vw] lg:w-1 w-[0.5vw] origin-top absolute bg-white rotate-45 right-0 group-hover:bg-gradient-to-b group-hover:from-[#a6e7ff] group-hover:to-[#6fb8ff] transition-all duration-300"></div>
           </div>
         </div>
-        <div className="py-12">
+        <div className="lg:py-12 py-[20vh]">
           <div className="relative border-y-1 link origin-top cursor-pointer opacity-0" style={{ transform: 'rotateX(90deg)' }}>
-            <h1 className="font-[font1] text-[9vw] uppercase text-center leading-[1] font-stretch-semi-expanded">
+            <h1 className="font-[font1] lg:text-[9vw] text-[10vh] uppercase text-center leading-[1] font-stretch-semi-expanded">
               Home
             </h1>
             <div className="absolute top-0 flex bg-gradient-to-b from-[#a6e7ff] to-[#6fb8ff] moveLink pointer-events-none">
@@ -169,7 +169,7 @@ const FullScreenNav = () => {
             </div>
           </div>
           <div className="relative border-b-1 link origin-top cursor-pointer opacity-0" style={{ transform: 'rotateX(90deg)' }}>
-            <h1 className="font-[font1] text-[9vw] uppercase text-center leading-[1] font-stretch-semi-expanded">
+            <h1 className="font-[font1] lg:text-[9vw] text-[10vh] uppercase text-center leading-[1] font-stretch-semi-expanded">
               Songs
             </h1>
             <div className="absolute top-0 flex bg-gradient-to-b from-[#a6e7ff] to-[#6fb8ff] moveLink pointer-events-none">
@@ -212,7 +212,7 @@ const FullScreenNav = () => {
             </div>
           </div>
           <div className="relative border-t-1 link origin-top cursor-pointer opacity-0" style={{ transform: 'rotateX(90deg)' }}>
-            <h1 className="font-[font1] text-[9vw] uppercase text-center leading-[1] font-stretch-semi-expanded">
+            <h1 className="font-[font1] lg:text-[9vw] text-[10vh] uppercase text-center leading-[1] font-stretch-semi-expanded">
               Characters
             </h1>
             <div className="absolute top-0 flex bg-gradient-to-b from-[#a6e7ff] to-[#6fb8ff] moveLink pointer-events-none">
@@ -255,7 +255,7 @@ const FullScreenNav = () => {
             </div>
           </div>
           <div className="relative border-y-1 link origin-top cursor-pointer opacity-0" style={{ transform: 'rotateX(90deg)' }}>
-            <h1 className="font-[font1] text-[9vw] uppercase text-center leading-[1] font-stretch-semi-expanded">
+            <h1 className="font-[font1] lg:text-[9vw] text-[10vh] uppercase text-center leading-[1] font-stretch-semi-expanded">
               About
             </h1>
             <div className="absolute top-0 flex bg-gradient-to-b from-[#a6e7ff] to-[#6fb8ff] moveLink pointer-events-none">

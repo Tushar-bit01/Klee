@@ -10,7 +10,7 @@ const App = () => {
   
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <NavBar/>
       <FullScreenNav/>
       <Routes>

@@ -47,14 +47,66 @@ const Project = () => {
   ];
   
   gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.registerPlugin(ScrollTrigger);
+
   useGSAP(() => {
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
   
+    // 📱 MOBILE – animate EACH inner song card
+    mm.add("(max-width: 768px)", () => {
+      const cards = gsap.utils.toArray(".card-item");
+  
+      gsap.fromTo(
+        cards,
+        {
+          y: 90,
+          opacity: 0,
+          rotateZ: -3,
+          filter: "blur(6px)",
+        },
+        {
+          y: 0,
+          opacity: 1,
+          rotateZ: 0,
+          filter: "blur(0px)",
+          stagger: 0.25,        // 🔥 animation between both inner cards
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".bigHero",
+            start: "top 95%",
+            end: "bottom 70%",
+            scrub: 1,
+          },
+        }
+      );
+  
+      // image parallax (subtle, no cutting buttons)
+      gsap.utils.toArray(".card-item img").forEach((img) => {
+        gsap.fromTo(
+          img,
+          { y: 25, scale: 1.06 },
+          {
+            y: -25,
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: img,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      });
+    });
+  
+    // 💻 DESKTOP – keep your old badass animation
+    mm.add("(min-width: 769px)", () => {
       gsap.utils.toArray(".hero").forEach((card, index) => {
-  
         const imgs = card.querySelectorAll("img");
   
-        // 1️⃣ Main card motion (float + drift)
         gsap.fromTo(
           card,
           {
@@ -78,16 +130,6 @@ const Project = () => {
           }
         );
   
-        // 2️⃣ Breathing effect (very subtle)
-        gsap.to(card, {
-          scale: 1.015,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          duration: 2.5,
-        });
-  
-        // 3️⃣ Image depth parallax
         imgs.forEach((img, i) => {
           gsap.fromTo(
             img,
@@ -108,40 +150,21 @@ const Project = () => {
             }
           );
         });
-  
-        // 4️⃣ Inner glow pulse (Arcane energy)
-        gsap.fromTo(
-          card,
-          {
-            boxShadow: "0 0 0px rgba(120,140,255,0)",
-          },
-          {
-            boxShadow: "0 0 60px rgba(120,140,255,0.25)",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 70%",
-              end: "top 40%",
-              scrub: true,
-            },
-          }
-        );
       });
-  
     });
   
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
   
 
- //bg-gradient-to-b from-[#a6e7ff] to-[#6fb8ff] 
   return (
     <div className="p-2 bg-[#12131C]">
       <div className=" pt-[40.5vh]">
-        <h2 className="font-[font2] text-[12.5vw] upperCase text-white">Songs</h2>
+        <h2 className="font-[font2] lg:text-[12.5vw] text-[20vw] upperCase text-white">Songs</h2>
       </div>
-      <div className="-mt-12 bigHero">
+      <div className="-lg:mt-12 mt-4 bigHero">
       {songsCards.map((card,idx)=>(
-        <div key={idx} className="w-full h-[90vh] flex gap-2 mb-2 hero will-change-transform">
+        <div key={idx} className="w-full lg:h-[90vh] h-[150vh] flex lg:flex-row flex-col lg:gap-2 gap-4 lg:mb-2 mb-4 hero will-change-transform song-card">
         <SongsCard image1={card.img1} image2={card.img2} song1={card.song1}/>
         </div>
       ))}  

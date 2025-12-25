@@ -1,0 +1,11 @@
+:root{
+    --light:#ffff2b;
+    ---dark:#000;
+}
+
+.widgets{
+    margin-top:0;
+    padding:0;
+    box-sizing:border-box;
+    background-color: blue;
+}

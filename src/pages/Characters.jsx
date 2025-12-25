@@ -3,6 +3,7 @@ import JinxImg from "../assets/Characters/jinx.webp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
+import "./Characters.css";
 
 const Agence = () => {
   const imageDivRef = useRef(null);
@@ -33,7 +34,7 @@ const Agence = () => {
         trigger: imageDivRef.current,
         // markers: true,
         start: "top 31%",
-        end: "top -55%",
+        end: window.innerWidth >= 1024 ? "top -85%" : "top -55%",
         pin: true,
         pinSpacing: true,
         pinReparent: true,
@@ -58,7 +59,8 @@ const Agence = () => {
       <div className="section1 py-1">
         <div
           ref={imageDivRef}
-          className="absolute h-[20vw] w-[15vw] top-65 left-[30vw] overflow-hidden rounded-4xl"
+          className="absolute  h-[28vw] min-[760px]:h-[20vw]
+               w-[20vw] min-[760px]:w-[15vw]  left-[30vw] overflow-hidden lg:rounded-4xl rounded-2xl z-0"
         >
           <img
             src={JinxImg}
@@ -67,14 +69,14 @@ const Agence = () => {
           ></img>
         </div>
         <div>
-          <div className="mt-[57vh] relative">
+          <div className="min-[760px]:mt-[57vh] mt-[40vh] relative">
             <h1 className="text-[17vw] text-center leading-[15vw] upperCase font-[font2] scale-y-[1.2] origin-center font-stretch-semi-expanded">
             SHΔTTERED
               <br></br> legends
             </h1>
           </div>
-          <div className="pl-[50%] mt-10">
-            <p className="text-3xl font-[font1]">
+          <div className="min-[760px]:pl-[50%] p-2 lg:mt-10 mt-5 relative z-[10]">
+            <p className="min-[760px]:text-3xl max-[390px]:text-xl max-[650px]:text-2xl font-[font1] z-[10]">
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp;In a city divided by progress and power, every legend
@@ -86,7 +88,11 @@ const Agence = () => {
           </div>
         </div>
       </div>
-      <div className="section2 h-screen"></div>
+      {/* <div className="section2 h-screen"></div> */}
+      <section className="widgets h-screen">
+        <div className="widget-preview-image"></div>
+        <div className="widget-title"></div>
+      </section>
     </div>
   );
 };
