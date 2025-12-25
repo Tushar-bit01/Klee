@@ -1,13 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef,useEffect } from "react";
 import JinxImg from "../assets/Characters/jinx.webp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import "./Characters.css";
+import { initWidgetSpinner } from "./character.js";
 
 const Agence = () => {
   const imageDivRef = useRef(null);
   const imageRef = useRef(null);
+  const widgetsRef = useRef(null);
 
   const imageArray = [
     "https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg",
@@ -25,7 +27,9 @@ const Agence = () => {
     "https://k72.ca/uploads/teamMembers/MEGGIE_480X640_2-480x640.jpg",
     "https://k72.ca/uploads/teamMembers/joel_480X640_3-480x640.jpg",
   ];
-
+  useEffect(() => {
+    initWidgetSpinner();
+  }, []);
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(function () {
@@ -34,7 +38,7 @@ const Agence = () => {
         trigger: imageDivRef.current,
         // markers: true,
         start: "top 31%",
-        end: window.innerWidth >= 1024 ? "top -85%" : "top -55%",
+        end: window.innerWidth >= 760 ? "top -85%" : "top -55%",
         pin: true,
         pinSpacing: true,
         pinReparent: true,
@@ -88,9 +92,10 @@ const Agence = () => {
           </div>
         </div>
       </div>
+     
       {/* <div className="section2 h-screen"></div> */}
-      <section className="widgets h-screen">
-        <div className="widget-preview-image"></div>
+      <section className="widgets h-screen font-[font1] relative mt-20" ref={widgetsRef}>
+      <div className="widget-preview-img"></div>
         <div className="widget-title"></div>
       </section>
     </div>
