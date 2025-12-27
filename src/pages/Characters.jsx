@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useContext } from "react";
-import JinxImg from "../assets/Characters/jinx.webp";
+import JinxImg from "../assets/Characters/jinxx.png";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
