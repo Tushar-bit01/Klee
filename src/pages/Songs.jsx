@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { LangContext } from "../context/NavContext";
-import Enemy from "../assets/Songs/enemy.mp3";
+import Enemy from "../assets/Songs/Enemy.mp3";
 import Playground from "../assets/Songs/playground.mp3";
 import Animals from "../assets/Songs/animals.mp3";
 import Ashes from "../assets/Songs/ashes.mp3";
