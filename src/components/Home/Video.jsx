@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import HeroVideo from "../../assets/Home/fin.mp4";
+
 import { useEffect } from "react";
 
 const Video = ({sound}) => {
@@ -17,7 +17,7 @@ const Video = ({sound}) => {
         autoPlay
         muted
         ref={videoRef}
-        src={HeroVideo}
+        src="/videos/fin.mp4"
       ></video>
     </div>
   );
