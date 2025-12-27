@@ -43,7 +43,7 @@ const SongsCard = ({ image1, image2,song1,song2,songName1,songName2,artist1,arti
         <div className=" h-[18%] w-full px-10 py-2 flex justify-between ">
           <div className=" flex flex-col justify-center w-[40%] ">
             <h2 className="font-[font1] lg:text-5xl text-2xl truncate whitespace-nowrap">{songName1}</h2>
-            <p className="font-[font1] opacity-60 lg:text-2xl text-base">{artist1}</p>
+            <p className="font-[font1] opacity-60 lg:text-2xl text-base truncate whitespace-nowrap">{artist1}</p>
           </div>
           <div className=" w-[55%] h-full  flex justify-end   ">
             <img src={Next}  className="lg:h-[70%] h-[50%] self-center rotate-180"/>
@@ -61,7 +61,7 @@ const SongsCard = ({ image1, image2,song1,song2,songName1,songName2,artist1,arti
         <div className=" h-[18%] w-full px-10 py-2 flex justify-between ">
           <div className=" flex flex-col justify-center w-[40%] ">
             <h2 className="font-[font1] lg:text-5xl text-2xl truncate whitespace-nowrap">{songName2}</h2>
-            <p className="font-[font1] opacity-60 lg:text-2xl text-base">{artist2}</p>
+            <p className="font-[font1] opacity-60 lg:text-2xl text-base truncate whitespace-nowrap">{artist2}</p>
           </div>
           <div className=" w-[55%] h-full  flex justify-end   ">
             <img src={Next}  className="lg:h-[70%] h-[50%] self-center rotate-180"/>
