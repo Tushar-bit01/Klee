@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import NavImg from "../../assets/Navbar/TitleNavbar.png";
 import { NavbarContext } from "../../context/NavContext";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const navRef = useRef(null);
@@ -9,9 +10,9 @@ const NavBar = () => {
   const [navOpen,setNavOpen]=useContext(NavbarContext);
   return (
     <div className="flex items-start justify-between w-full fixed top-0 z-4  ">
-      <div className="lg:pl-2 pl-1 pt-0 lg:h-[5vw] lg:w-[16vw] h-[15vw] w-[36vw]">
+      <Link to="/" className="lg:pl-2 pl-1 pt-0 lg:h-[5vw] lg:w-[16vw] h-[15vw] w-[36vw]">
         <img src={NavImg} className="h-full w-full"></img>
-      </div>
+      </Link>
       <div onClick={()=>{
                 setNavOpen(true)
             }}

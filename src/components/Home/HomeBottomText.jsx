@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-
+import { LangContext } from '../../context/NavContext'
 
 const HomeBottomText = () => {
+    const [En] = useContext(LangContext);
+
     return (
       <div className="font-[font1] flex items-center justify-center gap-4 font-semibold mb-4">
         <Link
@@ -27,7 +29,7 @@ const HomeBottomText = () => {
             hover:shadow-[0_0_30px_rgba(140,210,255,0.45)]
           "
         >
-          Songs
+          {En ? "Songs" : "Chansons"}
         </Link>
   
         <Link
@@ -52,7 +54,7 @@ const HomeBottomText = () => {
             hover:shadow-[0_0_30px_rgba(140,210,255,0.45)]
           "
         >
-          Characters
+          {En ? "Characters" : "Personnages"}
         </Link>
       </div>
     );

@@ -1,30 +1,41 @@
 import gsap from "gsap";
-
+import Caitlyn from "../assets/Characters/caitx.png"
+import Ekko from "../assets/Characters/ekkox.png"
+import Jinx from "../assets/Characters/jinxx.png"
+import Vi from "../assets/Characters/vix.png"
 export function initWidgetSpinner() {
   const widgets = [
     {
-      image: "https://i.pinimg.com/1200x/98/be/db/98bedb704010b1abdea682eefa09f8c4.jpg",
-      name: "power",
+      image: Caitlyn,
+      name: "Caitlyn",
     },
     {
-      image: "https://i.pinimg.com/1200x/1c/58/07/1c5807050c10741cb7ea1b08f4186c64.jpg",
-      name: "makima",
+      image: Ekko,
+      name: "Ekko",
     },
     {
-      image: "https://i.pinimg.com/1200x/98/be/db/98bedb704010b1abdea682eefa09f8c4.jpg",
-      name: "power",
+      image: "https://i.pinimg.com/1200x/4c/76/62/4c76620bb11597df453f11df5407b7b2.jpg",
+      name: "Heimerdinger",
     },
     {
-      image: "https://i.pinimg.com/736x/26/62/6e/26626e0460914e8d7e50011232c5e34e.jpg",
-      name: "unknown",
+      image: "https://i.pinimg.com/1200x/97/95/05/9795052cc68c0ae0ac4e9a3c55b9ff3c.jpg",
+      name: "Jayce",
     },
     {
-      image: "https://i.pinimg.com/1200x/98/be/db/98bedb704010b1abdea682eefa09f8c4.jpg",
-      name: "power",
+      image: Jinx,
+      name: "Jinx",
     },
     {
-      image: "https://i.pinimg.com/1200x/1c/58/07/1c5807050c10741cb7ea1b08f4186c64.jpg",
-      name: "makima",
+      image: "https://i.pinimg.com/736x/02/04/fe/0204febfd4c21165e3ea262f8103da1c.jpg",
+      name: "Silco",
+    },
+    {
+      image: Vi,
+      name: "Vi",
+    },
+    {
+      image: "https://i.pinimg.com/1200x/a0/76/3a/a0763a4b7200008057787b3b3a91a007.jpg",
+      name: "Viktor",
     },
   ];
 
@@ -47,7 +58,7 @@ export function initWidgetSpinner() {
   const createWidgetSpinner = () => {
     const container = document.querySelector(".widgets");
     
-    // Remove any existing SVG first
+    
     const existingSvg = document.getElementById("widget-svg");
     if (existingSvg) {
       existingSvg.remove();
@@ -114,7 +125,7 @@ export function initWidgetSpinner() {
     }
     svg.appendChild(segmentsGroup);
     
-    // Create indicator AFTER segments group so it renders on top
+    
     const indicator = createSVG("line", {
       id: "widget-indicator",
       x1: centerX,
@@ -132,33 +143,34 @@ export function initWidgetSpinner() {
   const updateContent = () => {
     const relativeRotation =
       (((currentIndicatorRotation - currentSpinnerRotation) % 360) + 360) % 360;
-    const segmentIndex = Math.floor(relativeRotation / 60) % widgets.length;
+    const anglePerSegment = 360 / widgets.length;
+    const segmentIndex = Math.floor(relativeRotation / anglePerSegment) % widgets.length;
     if (segmentIndex !== lastSegmentIndex) {
       lastSegmentIndex = segmentIndex;
-
+  
       const titleElement = document.querySelector(".widget-title");
       if (titleElement) {
         titleElement.textContent = widgets[segmentIndex].name;
       }
-
+  
       const previewContainer = document.querySelector(".widget-preview-img");
       if (previewContainer) {
         const img = document.createElement("img");
-
+  
         img.src = widgets[segmentIndex].image;
         img.alt = widgets[segmentIndex].name;
-
+  
         gsap.set(img, { opacity: 0 });
         previewContainer.appendChild(img);
-
+  
         gsap.to(img, {
           opacity: 1,
           duration: 0.1,
           ease: "power2.out",
         });
-
+  
         const allImages = previewContainer.querySelectorAll("img");
-
+  
         if (allImages.length > 3) {
           for (let i = 0; i < allImages.length - 3; i++) {
             previewContainer.removeChild(allImages[i]);
@@ -167,7 +179,6 @@ export function initWidgetSpinner() {
       }
     }
   };
-
   const animate = () => {
     const currentTime = performance.now();
     let deltaTime = (currentTime - lastTime) / 1000;
@@ -189,7 +200,7 @@ export function initWidgetSpinner() {
       );
     }
     
-    // Update the indicator
+   
     const indicator = svg?.querySelector("#widget-indicator");
     if (indicator) {
       indicator.setAttribute(
@@ -205,7 +216,7 @@ export function initWidgetSpinner() {
 
   animate();
 
-  // Mouse drag interaction for spinning the wheel
+ 
   let isDragging = false;
   let startY = 0;
   let startRotation = 0;
@@ -252,7 +263,7 @@ export function initWidgetSpinner() {
     isDragging = false;
   };
 
-  // Add event listeners
+  
   document.addEventListener("mousedown", (e) => {
     if (e.target.closest("#widget-svg")) {
       handleMouseDown(e);
