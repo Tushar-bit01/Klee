@@ -3,6 +3,7 @@ import Caitlyn from "../assets/Characters/caitx.png"
 import Ekko from "../assets/Characters/ekkox.png"
 import Jinx from "../assets/Characters/jinxx.png"
 import Vi from "../assets/Characters/vix.png"
+
 export function initWidgetSpinner() {
   const widgets = [
     {
@@ -136,6 +137,8 @@ export function initWidgetSpinner() {
     svg.appendChild(indicator);
     
     container.appendChild(svg);
+    
+    if (svg) svg.style.cursor = "grab";
   };
   
   createWidgetSpinner();
@@ -179,6 +182,7 @@ export function initWidgetSpinner() {
       }
     }
   };
+  
   const animate = () => {
     const currentTime = performance.now();
     let deltaTime = (currentTime - lastTime) / 1000;
@@ -222,6 +226,9 @@ export function initWidgetSpinner() {
   let startRotation = 0;
 
   const handleMouseDown = (e) => {
+   
+    if (!e.target.closest("#widget-svg")) return;
+    
     isDragging = true;
     startY = e.clientY;
     startRotation = targetIndicatorRotation;
@@ -245,6 +252,9 @@ export function initWidgetSpinner() {
   };
 
   const handleTouchStart = (e) => {
+   
+    if (!e.target.closest("#widget-svg")) return;
+    
     isDragging = true;
     startY = e.touches[0].clientY;
     startRotation = targetIndicatorRotation;
@@ -264,27 +274,13 @@ export function initWidgetSpinner() {
   };
 
   
-  document.addEventListener("mousedown", (e) => {
-    if (e.target.closest("#widget-svg")) {
-      handleMouseDown(e);
-    }
-  });
+  document.addEventListener("mousedown", handleMouseDown);
   document.addEventListener("mousemove", handleMouseMove);
   document.addEventListener("mouseup", handleMouseUp);
 
-  document.addEventListener("touchstart", (e) => {
-    if (e.target.closest("#widget-svg")) {
-      handleTouchStart(e);
-    }
-  });
-  document.addEventListener("touchmove", (e) => {
-    if (e.target.closest("#widget-svg")) {
-      handleTouchMove(e);
-    }
-  });
+  document.addEventListener("touchstart", handleTouchStart);
+  document.addEventListener("touchmove", handleTouchMove);
   document.addEventListener("touchend", handleTouchEnd);
-
-  if (svg) svg.style.cursor = "grab";
 
   window.addEventListener("resize", () => {
     lastSegmentIndex = -1;
